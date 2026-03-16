@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: python
+    pod-template-hash: b5fcd975c
+  name: python
+  namespace: demo
+spec:
+  ports:
+  - port: 5000
+    protocol: TCP
+    targetPort: 5000
+  selector:
+    app: python
+    pod-template-hash: b5fcd975c
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}
