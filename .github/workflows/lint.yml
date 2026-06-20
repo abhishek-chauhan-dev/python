@@ -1,0 +1,24 @@
+# Goal: In this workflow, we will validate the indentation, syntax of our python code.
+
+name: python-linter
+
+on:
+  push: 
+    branches:
+      - main
+
+jobs:
+  code-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Code clone
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install linter
+        run: pip3 install pylint
+      - name: Run linter
+        run: pylint *.py
+
